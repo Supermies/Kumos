@@ -1,1 +1,1 @@
-# Welcome to our website. Head on into our [wiki!](home)
+# Welcome to our website. Head on into our [wiki!](wiki)
