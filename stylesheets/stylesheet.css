@@ -434,6 +434,7 @@ body {
   line-height: 1.5;
   color: #666;
   background: #fafafa url(../assets/body-bg.jpg) 0 0 repeat;
+  float: center;
   min-width: 480px;
   max-width: 1080px;
 }
