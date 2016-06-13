@@ -434,6 +434,8 @@ body {
   line-height: 1.5;
   color: #666;
   background: #fafafa url(../assets/body-bg.jpg) 0 0 repeat;
+  min-width: 480px;
+  max-width: 1080px;
 }
 
 p {
@@ -483,7 +485,7 @@ header h2 {
 }
 
 .inner {
-  position: fixed;
+  position: relative;
   min-width: 480px;
   max-width: 940px;
   margin: 0 auto;
