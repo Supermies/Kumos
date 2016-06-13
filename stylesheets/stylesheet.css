@@ -480,12 +480,10 @@ header h2 {
 .logostuff
 {
   height: 175px;
-  min-width: 50%;
-  max-width: 100%;
 }
 
 .inner {
-  position: relative;
+  position: fixed;
   min-width: 480px;
   max-width: 940px;
   margin: 0 auto;
