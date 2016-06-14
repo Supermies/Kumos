@@ -540,6 +540,7 @@ a.button small {
 }
 header a.button {
   position: absolute;
+  float: right;
   top: 0;
   right: 0;
   background: transparent url(../assets/github-button.png) 0 0 no-repeat;
