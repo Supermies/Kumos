@@ -539,8 +539,7 @@ a.button small {
   font-size: 11px;
 }
 header a.button {
-
-  float: right;
+  position: static;
   top: 0;
   right: 0;
   background: transparent url(../assets/github-button.png) 0 0 no-repeat;
