@@ -10,16 +10,15 @@ Kaa:
   - MONGODB_HOSTS=mongodbhost:27017
   - JDBC_HOST=postgreshost
   - JDBC_PORT=5432
-  command: bash -c "/config_listener.sh && /usr/bin/kaa-node start && while true; do sleep 1; done"
-  #ports:
-  #- "8080:8080"
-  #- "9000:9000"
-  #- "22:22"
-  #- "9888-9889:9888-9889"
-  #- "9997:9997"
-  #- "9999:9999"
-  #tty: true
-  #stdin_open: true
+  ports:
+  - "8080:8080"
+  - "9080:9080"
+  - "22:22"
+  - "9888-9889:9888-9889"
+  - "9997:9997"
+  - "9999:9999"
+  tty: true
+  stdin_open: true
   links:
   - Cassandra
   - zk
