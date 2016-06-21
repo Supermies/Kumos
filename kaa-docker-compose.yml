@@ -18,11 +18,13 @@ Kaa:
   - "9888-9889:9888-9889"
   - "9997:9997"
   - "9999:9999"
-  tty: true
-  stdin_open: true
+  #tty: true
+  #stdin_open: true
   links:
   - Cassandra
   - zk
+  - postgreshost
+  - mongodbhost
 
 Cassandra:
   environment:
