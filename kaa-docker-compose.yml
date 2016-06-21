@@ -1,5 +1,5 @@
 Kaa:
-  image: kaaproject/node:0.9.0
+  image: wozozo/kaa
   environment:
   - CONTROL_ENABLED=true
   - BOOTSTRAP_ENABLED=true
@@ -11,13 +11,13 @@ Kaa:
   - JDBC_HOST=postgreshost
   - JDBC_PORT=5432
   command: bash -c "/config_listener.sh && /usr/bin/kaa-node start && while true; do sleep 1; done"
-  ports:
-  - "8080:8080"
-  - "9000:9000"
-  - "22:22"
-  - "9888-9889:9888-9889"
-  - "9997:9997"
-  - "9999:9999"
+  #ports:
+  #- "8080:8080"
+  #- "9000:9000"
+  #- "22:22"
+  #- "9888-9889:9888-9889"
+  #- "9997:9997"
+  #- "9999:9999"
   #tty: true
   #stdin_open: true
   links:
@@ -50,6 +50,11 @@ zk:
   - /opt/zk/data
   ports:
   - "2181:2181"
+  links: 
+  - Cassandra
+  - postgreshost
+  - mongodbhost
+  - Kaa
 postgreshost:
   image: postgres
   expose:
