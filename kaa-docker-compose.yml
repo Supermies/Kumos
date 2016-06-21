@@ -1,0 +1,24 @@
+Kaa:
+  image: wozozo/kaa
+  ports:
+  - "8080:8080"
+  - "9000:9000"
+  - "22:22"
+  - "9888-9889:9888-9889"
+  - "9997:9997"
+  - "9999:9999"
+  tty: true
+  stdin_open: true
+  links:
+  - Cassandra
+
+Cassandra:
+  environment:
+    RANCHER_ENABLE: 'true'
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: pboos/rancher-cassandra:3.1
+  volumes:
+  - /var/lib/cassandra
+  stdin_open: true
