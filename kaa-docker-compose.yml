@@ -17,7 +17,7 @@ Kaa:
   links:
   - Cassandra
   - zk
-  - postgreshost
+  - mariadb
   - mongodbhost
 
 Cassandra:
