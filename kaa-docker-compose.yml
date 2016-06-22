@@ -1,5 +1,5 @@
 Kaa:
-  image: supermies/kumos
+  image: supermies/kaa
   environment:
   - CONTROL_ENABLED=true
   - BOOTSTRAP_ENABLED=true
@@ -12,6 +12,8 @@ Kaa:
   - JDBC_PORT=5432
   tty: true
   stdin_open: true
+  ports:
+  - "8080:8080"
   links:
   - Cassandra
   - zk
@@ -44,17 +46,25 @@ zk:
   - "2181:2181"
   links: 
   - Cassandra
-  - postgreshost
+  - mariadb
   - mongodbhost
-  - Kaa
-postgreshost:
-  image: postgres
-  expose:
-  - "5432"
-  environment:
-  - POSTGRES_PASSWORD=admin
-  - POSTGRES_DB=kaa
+#postgreshost:
+#  image: postgres
+#  expose:
+#  - "5432"
+#  environment:
+#  - POSTGRES_PASSWORD=admin
+#  - POSTGRES_DB=kaa
 mongodbhost:
   image: mongo
   ports:
   - "27017:27017"
+mariadb:
+  image: iotitude/mariadb
+  build:
+    context: ./mariadb
+  environment:
+  MYSQL_ROOT_PASSWORD: 'maria'
+  MYSQL_DATABASE: 'kaa'
+  MYSQL_USER: 'sqladmin'
+  MYSQL_PASSWORD: 'admin'
