@@ -19,4 +19,3 @@ RUN sudo echo 'kaa     ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 EXPOSE 8080 25 20 9888 9889 9997 9999
 RUN service kaa-node start
 RUN /bin/bash
-CMD ["kaa-node", "-f"]
