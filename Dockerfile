@@ -13,7 +13,14 @@ RUN service kaa-node stop
 
 #Don't prompt for password
 RUN sudo echo 'kaa     ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-
+ENV CONTROL_ENABLED=true
+ENV BOOTSTRAP_ENABLED=true
+ENV OPERATIONS_ENABLED=true
+ENV DATABASE=cassandra
+ENV ZK_HOSTS=zk:2181
+ENV CASSANDRA_HOSTS=Cassandra:9042
+ENV JDBC_HOST=mariadb
+ENV JDBC_PORT=3306
 #ADD ./config_listener.sh /
 #RUN chmod 777 /config_listener.sh
 EXPOSE 8080 25 20 9888 9889 9997 9999
