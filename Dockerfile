@@ -13,14 +13,20 @@ RUN service kaa-node stop
 
 #Don't prompt for password
 RUN sudo echo 'kaa     ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-ENV CONTROL_ENABLED=true
-ENV BOOTSTRAP_ENABLED=true
-ENV OPERATIONS_ENABLED=true
-ENV DATABASE=cassandra
-ENV ZK_HOSTS=zk:2181
-ENV CASSANDRA_HOSTS=Cassandra:9042
-ENV JDBC_HOST=mariadb
-ENV JDBC_PORT=3306
+RUN sed -i '3s/.*/nosql_db_provider_name=cassandra/' /etc/kaa-node/conf/nosql-dao.properties
+# Set mariadb host
+RUN sed -i "s/\(jdbc_url *= *\).*/\1jdbc\:mysql\:failover\:\/\/mariadb\:3306\/kaa/" /usr/lib/kaa-node/conf/admin-dao.properties
+RUN sed -i "s/\(jdbc_host_port *= *\).*/\1mariadb\:3306/" /usr/lib/kaa-node/conf/sql-dao.properties
+# Set zookeeper host
+RUN sed -i "s/\(zk_host_port_list *= *\).*/\1zookeeper\:2181/" /usr/lib/kaa-node/conf/kaa-node.properties
+#ENV CONTROL_ENABLED=true
+#ENV BOOTSTRAP_ENABLED=true
+#ENV OPERATIONS_ENABLED=true
+#ENV DATABASE=cassandra
+#ENV ZK_HOSTS=zk:2181
+#ENV CASSANDRA_HOSTS=Cassandra:9042
+#ENV JDBC_HOST=mariadb
+#ENV JDBC_PORT=3306
 #ADD ./config_listener.sh /
 #RUN chmod 777 /config_listener.sh
 EXPOSE 8080 25 20 9888 9889 9997 9999
