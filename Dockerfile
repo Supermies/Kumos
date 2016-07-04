@@ -20,16 +20,7 @@ RUN sed -i "s/\(jdbc_host_port *= *\).*/\1mariadb\:3306/" /usr/lib/kaa-node/conf
 # Set zookeeper host
 RUN sed -i "s/\(zk_host_port_list *= *\).*/\1zookeeper\:2181/" /usr/lib/kaa-node/conf/kaa-node.properties
 RUN sed -i "s/\(transport_public_interface *= *\).*/\1localhost=kaa/" /usr/lib/kaa-node/conf/kaa-node.properties
-#ENV CONTROL_ENABLED=true
-#ENV BOOTSTRAP_ENABLED=true
-#ENV OPERATIONS_ENABLED=true
-#ENV DATABASE=cassandra
-#ENV ZK_HOSTS=zk:2181
-#ENV CASSANDRA_HOSTS=Cassandra:9042
-#ENV JDBC_HOST=mariadb
-#ENV JDBC_PORT=3306
-#ADD ./config_listener.sh /
-#RUN chmod 777 /config_listener.sh
+
 EXPOSE 8080 25 20 9888 9889 9997 9999
 RUN service kaa-node start
 RUN /bin/bash
