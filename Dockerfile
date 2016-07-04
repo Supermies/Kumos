@@ -19,6 +19,7 @@ RUN sed -i "s/\(jdbc_url *= *\).*/\1jdbc\:mysql\:failover\:\/\/mariadb\:3306\/ka
 RUN sed -i "s/\(jdbc_host_port *= *\).*/\1mariadb\:3306/" /usr/lib/kaa-node/conf/sql-dao.properties
 # Set zookeeper host
 RUN sed -i "s/\(zk_host_port_list *= *\).*/\1zookeeper\:2181/" /usr/lib/kaa-node/conf/kaa-node.properties
+RUN sed -i "s/\(transport_public_interface *= *\).*/\1localhost=kaa/" /usr/lib/kaa-node/conf/kaa-node.properties
 #ENV CONTROL_ENABLED=true
 #ENV BOOTSTRAP_ENABLED=true
 #ENV OPERATIONS_ENABLED=true
